@@ -13,6 +13,7 @@ export VISUAL=nvim
 export BOOST_ROOT=/usr/local 
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH 
 export CPLUS_INCLUDE_PATH=/usr/local/include:$CPLUS_INCLUDE_PATH 
+export IDF_PATH="$HOME/esp/esp-idf/"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
@@ -109,7 +110,8 @@ alias mount-windows="sudo mount /dev/nvme0n1p5 /mnt/windows"
 alias todo="nvim ~/todo.md"
 alias comprun="make -j$(nproc) && ./bin"
 alias passwordLockReset="faillock --user username --reset"
-
+alias compload="arduino-cli compile --fqbn esp32:esp32:esp32doit-devkit-v1 --build-path .build --output-dir bin/. . && arduino-cli upload -p /dev/ttyUSB0 --fqbn esp32:esp32:esp32doit-devkit-v1 ."
+alias get-idf=". ~/.espressif/tools/activate_idf_v6.1.sh"
 
 #keysbinds:
 # Make Ctrl+Backspace / Ctrl+W delete the previous word
@@ -129,6 +131,7 @@ path_dirs=(
   "/usr/games"
   "/usr/local/games"
   "$HOME/.npm-global/bin:$PATH"
+  "$HOME/esp/xtensa-esp32-elf/bin"
 )
 
 # Add directories to PATH if they exist and aren't already in PATH
